@@ -3,8 +3,30 @@ class TestElement extends HTMLElement {
     super();
   }
 
+  static get observedAttributes() {
+    return ['test']
+  }
+
   connectedCallback() {
     console.log("custom element added to page")
+    this.attachShadow({mode: 'open'})
+    this.shadowRoot.innerHTML = `
+      <style>
+        div {
+          background-color: red;
+        }
+        ::slotted(span) {
+          color: blue;
+        }
+      </style>
+
+      <div>Name:
+        <slot name="username"></slot>
+      </div>
+      <div>Birthday:
+        <slot name="birthday"></slot>
+      </div>
+    `
   }
 
   disconnectedCallback() {

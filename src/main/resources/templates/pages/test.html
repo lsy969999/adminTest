@@ -2,9 +2,10 @@
 <html xmlns:th="http//www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/default_layout}">
-
     <div layout:fragment="content">
-        본문 영역입니다.
+        <test-element test="abc" test2="haha">
+          <span slot="username">John Smith</span>
+          <span slot="birthday">01. 01. 2021</span>
+        </test-element>
     </div>
-
 </html>
