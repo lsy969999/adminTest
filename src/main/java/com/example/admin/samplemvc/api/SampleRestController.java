@@ -1,4 +1,4 @@
-package com.example.admin.samplemvc.apicontroller;
+package com.example.admin.samplemvc.api;
 
 import com.example.admin.samplemvc.entity.SampleEntity;
 import com.example.admin.samplemvc.service.SampleService;
