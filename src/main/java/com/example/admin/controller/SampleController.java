@@ -23,8 +23,10 @@ public class SampleController {
     log.debug("SampleController / hi");
     String sampleCon = this.sampleService.sampleConstString();
     List<SampleEntity> allSampleEntity = this.sampleService.getAllSampleEntity();
+    List<SampleEntity> allSampleEntityDsl = this.sampleService.getAllSampleEntityDsl();
     model.addAttribute("sampleCon", sampleCon);
     model.addAttribute("sample", allSampleEntity);
+    model.addAttribute("sampleDsl", allSampleEntityDsl);
     model.addAttribute("test", "test");
     model.addAttribute("name", "Lsy");
     return "pages/test";

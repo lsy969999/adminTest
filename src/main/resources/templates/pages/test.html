@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http//www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/default_layout}">
+<html xmlns:th="http//www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/default_layout}">
     <div layout:fragment="content">
       <test-element th:test="${test}" test2="haha">
         <span slot="username" th:text="${name}">John Smith</span>
