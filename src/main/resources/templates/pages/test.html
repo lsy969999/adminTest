@@ -7,8 +7,11 @@
         <span slot="username" th:text="${name}">John Smith</span>
         <span slot="birthday">01. 01. 2021</span>
       </test-element>
+      <test-button></test-button>
+      <button type="button" class="btn btn-primary">Base class2</button>
       <script th:inline="javascript" type="module">
         import /*[[@{/public/js/elements/test-element.js}]]*/ '';
+        import /*[[@{/public/js/elements/test-button.js}]]*/ '';
       </script>
     </div>
 </html>

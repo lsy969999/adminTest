@@ -1,9 +1,26 @@
 server:
   port: 7777
 
+logging:
+  level:
+    '[com.example.admin]': DEBUG
+    '[org.hibernate.SQL]': DEBUG #jpa |
+    '[org.hibernate.type.descriptor.sql]': TRACE # jpa | parameter
+
 spring:
   thymeleaf:
     prefix: classpath:/templates/
     suffix: .html
     encoding: UTF-8
     cache: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mydatabase
+    username: myuser
+    password: mypassword
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
