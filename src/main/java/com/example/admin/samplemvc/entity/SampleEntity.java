@@ -1,4 +1,4 @@
-package com.example.admin.entity;
+package com.example.admin.samplemvc.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

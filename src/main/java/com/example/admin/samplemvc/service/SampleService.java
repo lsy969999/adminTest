@@ -1,12 +1,12 @@
-package com.example.admin.service;
+package com.example.admin.samplemvc.service;
 
 import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import com.example.admin.entity.SampleEntity;
-import com.example.admin.repository.SampleRepository;
+import com.example.admin.samplemvc.entity.SampleEntity;
+import com.example.admin.samplemvc.repository.sample.SampleRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service

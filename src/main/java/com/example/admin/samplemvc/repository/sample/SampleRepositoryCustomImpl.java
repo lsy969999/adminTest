@@ -1,7 +1,7 @@
-package com.example.admin.repository;
+package com.example.admin.samplemvc.repository.sample;
 
-import com.example.admin.entity.QSampleEntity;
-import com.example.admin.entity.SampleEntity;
+import com.example.admin.samplemvc.entity.QSampleEntity;
+import com.example.admin.samplemvc.entity.SampleEntity;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 
