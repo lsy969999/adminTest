@@ -1,0 +1,7 @@
+=== Request
+
+include::{snippets}/sample-api-doc/http-request.adoc[]
+
+=== Response
+
+include::{snippets}/sample-api-doc/http-response.adoc[]
