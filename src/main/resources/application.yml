@@ -1,3 +1,7 @@
+app:
+  jwt:
+    secret: rkGU45258GGhiolLO2465TFY5345kGU45258GGhiolLO2465TFY5345aaaa
+
 server:
   port: 7777
 

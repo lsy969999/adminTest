@@ -1,8 +1,8 @@
 package com.example.admin.component;
 
-
 import java.util.Map;
 import javax.crypto.SecretKey;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,8 +18,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class JwtComponent {
   private final ObjectMapper om;
-  //TODO: replace property value
-  private String jwtSecret = "rkGU45258GGhiolLO2465TFY5345kGU45258GGhiolLO2465TFY5345aaaa";
+  @Value("${app.jwt.secret}")
+  private String jwtSecret;
 
   private SecretKey getJwtKey(){
     byte[] keyBytes = Decoders.BASE64.decode(this.jwtSecret);
