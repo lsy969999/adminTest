@@ -51,6 +51,9 @@ dependencies {
   runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.3'
   runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.3'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.16.0'
 }
 
 tasks.named('test') {
@@ -62,6 +65,7 @@ ext { //restDoc
 }
 
 test { //restDoc
+	useJUnitPlatform()
 	outputs.dir snippetsDir
 }
 

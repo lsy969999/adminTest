@@ -1,6 +1,7 @@
 package com.example.admin.component;
 
-import org.assertj.core.api.Assert;
+import java.util.HashMap;
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,14 +16,17 @@ public class JwtComponentTest {
 
   @Test
   void createJwtTest(){
-    log.error("createJwtTest123123123");
+    Map<String, Object> claims = new HashMap<>();
+    claims.put("test1", "test1val");
+    claims.put("test2", "test2val");
+    String jwt = jwtComponent.createJwt(claims);
+    log.info("jwt: {}", jwt);
   }
 
   @Test
   void readJwtTest(){
-    log.info("createJwtTest123123123");
-
+    String jwt = "eyJhbGciOiJIUzI1NiJ9.eyJ0ZXN0MiI6InRlc3QydmFsIiwidGVzdDEiOiJ0ZXN0MXZhbCJ9.Si2p5sftpWbfa0YPJKwa-59RQv6S_lpg5ib_5FfL4Kc";
+    Map<String, Object> payloadMap = this.jwtComponent.getJwtPayload(jwt);
+    log.info("payloadMap: {}", payloadMap);
   }
-
-
 }
