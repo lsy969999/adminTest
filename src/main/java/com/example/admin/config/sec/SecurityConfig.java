@@ -17,32 +17,32 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SecurityConfig {
   private final JwtFilter jwtFilter;
+  private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
+  private final CustomAccessDeniedHandler customAccessDeniedHandler;
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    http.csrf(csrf->csrf.disable());
-    
-    http.headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable()));
-
-    http.authorizeHttpRequests(
-      authorize -> authorize
-                    .requestMatchers("/api/sample/**").permitAll()
-                    .requestMatchers("/sample/**").permitAll()
-                    .requestMatchers("/public/**").permitAll()
-                    .requestMatchers("/static/**").permitAll()
-                    .requestMatchers("/docs/**").permitAll()
-                    .anyRequest().authenticated()
-    );
-
-    http.httpBasic(b->b.disable());
-    
-    http.formLogin(f->f.disable());
-
-    http.sessionManagement(sm->sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-
-    http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
-    
-    return http.build();
+    return http
+              .csrf(csrf->csrf.disable())
+              .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable()))
+              .authorizeHttpRequests(
+                      authorize -> authorize
+//                              .requestMatchers("/api/sample/**").permitAll()
+                              .requestMatchers("/sample/**").permitAll()
+                              .requestMatchers("/public/**").permitAll()
+                              .requestMatchers("/static/**").permitAll()
+                              .requestMatchers("/docs/**").permitAll()
+                              .anyRequest().authenticated()
+              )
+              .exceptionHandling(eh -> {
+                eh.authenticationEntryPoint(this.customAuthenticationEntryPoint);
+                eh.accessDeniedHandler(customAccessDeniedHandler);
+              })
+              .httpBasic(b->b.disable())
+              .formLogin(f->f.disable())
+              .sessionManagement(sm->sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+              .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
+              .build();
   }
 
   @Bean
