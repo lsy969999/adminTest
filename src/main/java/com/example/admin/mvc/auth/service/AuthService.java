@@ -10,10 +10,12 @@ public class AuthService {
   private final JwtComponent jwtComponent;
   
   private String generateAccessToken(){
+    long exp = 1000 * 60 * 60 * 3;
     return null;
   }
 
   private String generateRefreshToken(){
+    long exp = 1000 * 60 * 60 * 3;
     return null;
   }
 }
