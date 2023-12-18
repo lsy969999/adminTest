@@ -6,7 +6,6 @@ import com.example.admin.mvc.auth.dto.TokenDTO;
 import com.example.admin.mvc.auth.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,6 +34,7 @@ public class AuthRestController {
 
     @PostMapping("/refresh")
     public ResponseEntity refresh(){
-        return ResponseEntity.ok(null);
+        throw new RuntimeException();
+        // return ResponseEntity.ok(null);
     }
 }
