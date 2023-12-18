@@ -1,5 +1,6 @@
 package com.example.admin.component;
 
+import java.util.Date;
 import java.util.Map;
 import javax.crypto.SecretKey;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,10 +27,14 @@ public class JwtComponent {
     return Keys.hmacShaKeyFor(keyBytes);
   }
   
-  public String createJwt(Map<String, ?> claims){
+  public String createJwt(Map<String, ?> claims, long exp){
+    Date expDate = new Date();
+    expDate.setTime(expDate.getTime() + exp);
     String jwt = Jwts.builder()
                       .claims(claims)
                       .signWith(this.getJwtKey())
+                      .issuedAt(new Date())
+                      .expiration(expDate)
                       .compact();
     return jwt;
   }

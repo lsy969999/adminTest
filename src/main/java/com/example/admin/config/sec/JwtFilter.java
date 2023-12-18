@@ -5,6 +5,9 @@ import java.net.http.HttpHeaders;
 import java.util.Map;
 
 import com.example.admin.component.JwtComponent;
+
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.MalformedJwtException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -38,12 +41,18 @@ public class JwtFilter extends OncePerRequestFilter {
     Map<String, Object> claims = null;
     try{
      claims = jwtComponent.getJwtPayload(token);
-    } catch (Exception e) {
-      log.error(e.getMessage());
+    } catch (MalformedJwtException mje) {
+      log.error("MalformedJwtException", mje.getMessage());
+    } catch (SecurityException se) {
+      log.error("SecurityException", se.getMessage());
+    } catch (ExpiredJwtException eje) {
+      log.error("ExpiredJwtException", eje.getMessage());
+    } catch (IllegalArgumentException iae) {
+      log.error("IllegalArgumentException", iae.getMessage());
+    } catch (Exception e){
+      log.error("Exception", e.getMessage());
     }
-
     UserDetails cud = customUserDetailsService.loadUserByUsername("");
-
     Authentication authentication = new UsernamePasswordAuthenticationToken(cud, "null", cud.getAuthorities());
     SecurityContextHolder.getContext().setAuthentication(authentication);
     log.debug("JwtFilter--- authorization: {}, claims: {}", authorization, claims);

@@ -27,11 +27,12 @@ public class SecurityConfig {
               .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable()))
               .authorizeHttpRequests(
                       authorize -> authorize
-//                              .requestMatchers("/api/sample/**").permitAll()
+                              // .requestMatchers("/api/sample/**").permitAll()
                               .requestMatchers("/sample/**").permitAll()
                               .requestMatchers("/public/**").permitAll()
                               .requestMatchers("/static/**").permitAll()
                               .requestMatchers("/docs/**").permitAll()
+                              .requestMatchers("/api/auth/email").permitAll()
                               .anyRequest().authenticated()
               )
               .exceptionHandling(eh -> {
