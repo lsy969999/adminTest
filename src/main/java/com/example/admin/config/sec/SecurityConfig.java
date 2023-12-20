@@ -33,7 +33,8 @@ public class SecurityConfig {
                               .requestMatchers("/static/**").permitAll()
                               .requestMatchers("/docs/**").permitAll()
                               .requestMatchers("/api/auth/email").permitAll()
-                              .requestMatchers("/api/auth/refresh").permitAll()
+                              // .requestMatchers("/api/auth/refresh").permitAll()
+                              .requestMatchers("/api/auth/refreshs").permitAll()
                               .anyRequest().authenticated()
               )
               .exceptionHandling(eh -> {

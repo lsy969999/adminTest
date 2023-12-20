@@ -1,9 +1,13 @@
 package com.example.admin.mvc.auth.api;
 
+import com.example.admin.config.exception.CustomException;
 import com.example.admin.constant.RVO;
+import com.example.admin.constant.code.ErrorCode;
 import com.example.admin.mvc.auth.dto.EmailLoginDTO;
 import com.example.admin.mvc.auth.dto.TokenDTO;
 import com.example.admin.mvc.auth.service.AuthService;
+
+import jakarta.annotation.security.RolesAllowed;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -32,9 +36,11 @@ public class AuthRestController {
         return ResponseEntity.ok(rvo);
     }
 
+    @RolesAllowed("ROLE_VIEWER")
     @PostMapping("/refresh")
     public ResponseEntity refresh(){
-        throw new RuntimeException();
-        // return ResponseEntity.ok(null);
+        // throw new RuntimeException();
+        // throw new CustomException(ErrorCode.E_9999.code, ErrorCode.E_9999.message);
+        return ResponseEntity.ok(null);
     }
 }

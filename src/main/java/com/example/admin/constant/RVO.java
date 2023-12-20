@@ -1,6 +1,7 @@
 package com.example.admin.constant;
 
 import java.util.Date;
+import com.example.admin.constant.code.SuccessCode;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -8,9 +9,9 @@ import lombok.Getter;
 @Builder
 public class RVO<T>{
   @Builder.Default
-  private String message = Message.Success;
+  private String message = SuccessCode.S_0000.code;
   @Builder.Default
-  private String errCode = Code.Success;
+  private String errCode = SuccessCode.S_0000.message;
   @Builder.Default
   private Long timestamp = (new Date()).getTime();
   private T data;
